@@ -1,3 +1,3 @@
 {
-  "resourcesTemplate": "https://ippk0629.blob.core.windows.net/task-artifacts/task1/exported-template.json"
+  "resourcesTemplate": "https://portal.azure.com/#view/Microsoft_Azure_Storage/ContainerMenuBlade/~/overview/storageAccountId/%2Fsubscriptions%2F05557aac-42da-4f44-9caf-6f337e43fcfe%2Fresourcegroups%2Fmate-resources%2Fproviders%2FMicrosoft.Storage%2FstorageAccounts%2Fippk0629/path/task-artifacts/etag/%220x8DC7CB978A013C1%22/defaultEncryptionScope/%24account-encryption-key/denyEncryptionScopeOverride~/false/defaultId//publicAccessVal/None"
 }
