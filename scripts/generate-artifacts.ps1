@@ -29,7 +29,7 @@ if ($storageAccount) {
     throw "Unable to find storage account $ArtifactsStorageAccountName in the resource group $rgName. Please make sure, that you specified the correct name of the storage account"
 }
 
-Write-Output "Checking if artifacts storage container exists" 
+Write-Output "Checking if artifacts storage container exists"
 $artifactContainer = Get-AzStorageContainer -Name $containerName -Context $storageAccount.Context -ErrorAction SilentlyContinue
 if ($artifactContainer) { 
     Write-Output "Storage container for artifacts found!" 
