@@ -5,11 +5,11 @@ $resourcesTemplateName = "exported-template.json"
 $taskName = "task1"
 $tempFolderPath = "$PWD/temp"
 
-Write-Output "Reading config" 
-$artifactsConfig = Get-Content -Path $artifactsConfigPath | ConvertFrom-Json 
+Write-Output "Reading config"
+$artifactsConfig = Get-Content -Path $artifactsConfigPath | ConvertFrom-Json
 
 Write-Output "Checking if temp folder exists"
-if (-not (Test-Path "$tempFolderPath")) { 
+if (-not (Test-Path "$tempFolderPath")) {
     Write-Output "Temp folder does not exist, creating..."
     New-Item -ItemType Directory -Path $tempFolderPath
 }
@@ -18,7 +18,7 @@ Write-Output "Downloading artifacts"
 
 if (-not $artifactsConfig.resourcesTemplate) { 
     Write-Error "Artifact config value 'resourcesTemplate' is empty! Please make sure that you executed the script 'scripts/generate-artifacts.ps1', and commited your changes"
-} 
+}
 Invoke-WebRequest -Uri $artifactsConfig.resourcesTemplate -OutFile "$tempFolderPath/$resourcesTemplateName" -UseBasicParsing
 
 Write-Output "Validating artifacts"
