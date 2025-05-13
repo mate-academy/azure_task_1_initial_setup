@@ -16,7 +16,7 @@ Write-Output "Running initial validation"
 $context = Get-AzContext  
 if ($context)   
 {  
-    Write-Output "Azure Powershell module is installed, account is connected."  
+    Write-Output "Azure Powershell module is installed, account is connected."
 } else {  
     throw "Please log in to Azure using Azure Powershell module (run Connect-AzAccount)"
 }  
