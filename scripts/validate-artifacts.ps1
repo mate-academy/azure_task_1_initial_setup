@@ -37,3 +37,4 @@ if ($storageAccount.sku.name -eq "Standard_LRS") {
 } else {
     Write-Error "Storage account SKU is not set to Standard LRS. Please try to create storage account again, and make sure that replication type is set to LRS"
 }
+
