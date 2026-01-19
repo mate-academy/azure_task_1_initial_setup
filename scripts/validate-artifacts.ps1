@@ -9,7 +9,7 @@ Write-Output "Reading config"
 $artifactsConfig = Get-Content -Path $artifactsConfigPath | ConvertFrom-Json 
 
 Write-Output "Checking if temp folder exists"
-if (-not (Test-Path "$tempFolderPath")) { 
+if (-not (Test-Path "$tempFolderPath")) {
     Write-Output "Temp folder does not exist, creating..."
     New-Item -ItemType Directory -Path $tempFolderPath
 }
