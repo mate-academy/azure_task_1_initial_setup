@@ -1,4 +1,4 @@
-
+# validate-artifacts
 # default script values 
 $artifactsConfigPath = "$PWD/artifacts.json"
 $resourcesTemplateName = "exported-template.json"

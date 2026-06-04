@@ -1,8 +1,8 @@
+# Generate-artifacts
 param(
     [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
     [string]$ArtifactsStorageAccountName
 )
-
 # default script values
 $rgName = "mate-resources"
 $containerName = "task-artifacts"
