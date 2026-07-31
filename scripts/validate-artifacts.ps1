@@ -1,4 +1,3 @@
-
 # default script values 
 $artifactsConfigPath = "$PWD/artifacts.json"
 $resourcesTemplateName = "exported-template.json"
@@ -28,12 +27,14 @@ $TemplateObject = ConvertFrom-Json $TemplateFileText -AsHashtable
 $storageAccount = ( $TemplateObject.resources | Where-Object -Property type -EQ "Microsoft.Storage/storageAccounts" )
 if ($storageAccount) {
     Write-Output "Checked if storage account exists - OK."
-} else {
+}
+else {
     Write-Error "Unable to find storage account in the resource template. Please make sure that you created the storage account"
 }
 
 if ($storageAccount.sku.name -eq "Standard_LRS") { 
     Write-Output "Checked the storage account SKU - OK."
-} else {
+}
+else {
     Write-Error "Storage account SKU is not set to Standard LRS. Please try to create storage account again, and make sure that replication type is set to LRS"
 }
