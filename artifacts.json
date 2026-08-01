@@ -1,3 +1,3 @@
 {
-  "resourcesTemplate": ""
+  "resourcesTemplate": "https://rodops.blob.core.windows.net/task-artifacts/task1/exported-template.json?sv=2025-07-05&se=2026-08-31T13%3A23%3A36Z&sr=b&sp=r&sig=WECSwrC8yj%2FWDKNHq2su5jy3CBi1j%2BxhnEuok3zSM6c%3D"
 }
