@@ -5,7 +5,7 @@ param(
 
 # default script values
 $rgName = "mate-resources"
-$containerName = "task-artifacts80"
+$containerName = "task-artifacts"
 $resourcesTemplateName = "exported-template.json"
 $taskName = "task1"
 $tempFolderPath = "$PWD/temp"
