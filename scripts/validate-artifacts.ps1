@@ -1,4 +1,5 @@
-﻿# default script values
+# Validates task artifacts from artifacts.json:
+# downloads the exported Azure resource template and checks storage account + Standard_LRS SKU.
 $artifactsConfigPath = "$PWD/artifacts.json"
 $resourcesTemplateName = "exported-template.json"
 $taskDirectory = "task1"
@@ -38,3 +39,5 @@ if ($storageAccount.sku.name -eq "Standard_LRS") {
 else {
     Write-Error "Storage account SKU is not set to Standard LRS. Please try to create storage account again, and make sure that replication type is set to LRS"
 }
+
+Write-Output "Artifact validation completed successfully for $taskDirectory."

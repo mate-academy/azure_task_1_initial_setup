@@ -1,4 +1,4 @@
-﻿param(
+param(
     [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
     [string]$ArtifactsStorageAccountName
 )
@@ -7,7 +7,7 @@
 $rgName = "mate-resources"
 $containerName = "task-artifacts"
 $resourcesTemplateName = "exported-template.json"
-$taskDirectory = "task1"
+$taskName = "task1"
 $tempFolderPath = "$PWD/temp"
 $artifactsConfigPath = "$PWD/artifacts.json"
 
@@ -56,7 +56,7 @@ Write-Output "Uploading resources template"
 $ResourcesTemplateBlob = @{
     File             = "$tempFolderPath/$resourcesTemplateName"
     Container        = $containerName
-    Blob             = "$taskDirectory/$resourcesTemplateName"
+    Blob             = "$taskName/$resourcesTemplateName"
     Context          = $storageAccount.Context
     StandardBlobTier = 'Hot'
 }
@@ -65,7 +65,7 @@ $blob = Set-AzStorageBlobContent @ResourcesTemplateBlob -Force
 Write-Output "Generating a SAS token for the template artifact"
 $date = Get-Date
 $date = $date.AddDays(30)
-$resourcesTemplateSaSToken = New-AzStorageBlobSASToken -Container $containerName -Blob "$taskDirectory/$resourcesTemplateName" -Permission r -ExpiryTime $date -Context $storageAccount.Context
+$resourcesTemplateSaSToken = New-AzStorageBlobSASToken -Container $containerName -Blob "$taskName/$resourcesTemplateName" -Permission r -ExpiryTime $date -Context $storageAccount.Context
 $resourcesTemplateURL = "$($blob.ICloudBlob.uri.AbsoluteUri)?$resourcesTemplateSaSToken"
 
 
