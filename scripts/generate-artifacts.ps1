@@ -1,5 +1,5 @@
 param(
-    [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
+    [Parameter(Mandatory = $true, ValueFromPipeline = $true)]
     [string]$ArtifactsStorageAccountName
 )
 
@@ -13,27 +13,29 @@ $artifactsConfigPath = "$PWD/artifacts.json"
 
 # initial validation
 Write-Output "Running initial validation"
-$context = Get-AzContext  
-if ($context)   
-{  
-    Write-Output "Azure Powershell module is installed, account is connected."  
-} else {  
+$context = Get-AzContext
+if ($context) {
+    Write-Output "Azure Powershell module is installed, account is connected."
+}
+else {
     throw "Please log in to Azure using Azure Powershell module (run Connect-AzAccount)"
-}  
+}
 
 Write-Output "Checking if storage account exists"
 $storageAccount = Get-AzStorageAccount -Name $ArtifactsStorageAccountName -ResourceGroupName $rgName -ErrorAction SilentlyContinue
 if ($storageAccount) {
     Write-Output "Storage account found"
-} else { 
+}
+else {
     throw "Unable to find storage account $ArtifactsStorageAccountName in the resource group $rgName. Please make sure, that you specified the correct name of the storage account"
 }
 
-Write-Output "Checking if artifacts storage container exists" 
+Write-Output "Checking if artifacts storage container exists"
 $artifactContainer = Get-AzStorageContainer -Name $containerName -Context $storageAccount.Context -ErrorAction SilentlyContinue
-if ($artifactContainer) { 
-    Write-Output "Storage container for artifacts found!" 
-} else { 
+if ($artifactContainer) {
+    Write-Output "Storage container for artifacts found!"
+}
+else {
     throw "Unable to find a storage container $containerName in the storage account $ArtifactsStorageAccountName, please make sure that it's created"
 }
 
@@ -42,7 +44,7 @@ if ($artifactContainer) {
 Write-Output "Generating artifacts"
 
 Write-Output "Checking if temp folder exists"
-if (-not (Test-Path "$tempFolderPath")) { 
+if (-not (Test-Path "$tempFolderPath")) {
     Write-Output "Temp folder does not exist, creating..."
     New-Item -ItemType Directory -Path $tempFolderPath
 }
@@ -62,7 +64,7 @@ $blob = Set-AzStorageBlobContent @ResourcesTemplateBlob -Force
 
 Write-Output "Generating a SAS token for the template artifact"
 $date = Get-Date
-$date = $date.AddDays(30) 
+$date = $date.AddDays(30)
 $resourcesTemplateSaSToken = New-AzStorageBlobSASToken -Container $containerName -Blob "$taskName/$resourcesTemplateName" -Permission r -ExpiryTime $date -Context $storageAccount.Context
 $resourcesTemplateURL = "$($blob.ICloudBlob.uri.AbsoluteUri)?$resourcesTemplateSaSToken"
 
