@@ -1,3 +1,4 @@
+# populate the file into the diff
 param(
     [Parameter(Mandatory=$true, ValueFromPipeline=$true)]
     [string]$ArtifactsStorageAccountName

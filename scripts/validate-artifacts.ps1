@@ -1,5 +1,5 @@
-
-# default script values 
+# populate the file into the diff
+# default script values
 $artifactsConfigPath = "$PWD/artifacts.json"
 $resourcesTemplateName = "exported-template.json"
 $taskName = "task1"
