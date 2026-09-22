@@ -5,6 +5,7 @@ $resourcesTemplateName = "exported-template.json"
 $taskName = "task1"
 $tempFolderPath = "$PWD/temp"
 
+
 Write-Output "Reading config" 
 $artifactsConfig = Get-Content -Path $artifactsConfigPath | ConvertFrom-Json 
 
