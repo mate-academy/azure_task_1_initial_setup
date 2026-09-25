@@ -1,0 +1,14 @@
+Validation command:
+
+
+scripts/validate-artifacts.ps1
+
+
+Result:
+
+Reading config
+Checking if temp folder exists
+Downloading artifacts
+Validating artifacts
+Checked if storage account exists - OK.
+Checked the storage account SKU - OK.
