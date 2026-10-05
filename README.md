@@ -47,4 +47,5 @@ In this task, you need to perform the following steps:
     ```
     The script should run without errors. 
 
-3. Commit your changes and submit your solution for review. 
+3. Commit your changes and submit your solution for review.
+ 
